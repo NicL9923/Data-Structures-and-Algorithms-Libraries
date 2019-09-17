@@ -8,7 +8,15 @@ SingleLinkedList::~SingleLinkedList() {
 
 }
 
-void SingleLinkedList::insertNode(int node) {
+void SingleLinkedList::insertNodeFront() {
+
+}
+
+void SingleLinkedList::insertNodeBack() {
+
+}
+
+void SingleLinkedList::insertNodeAt(int node) {
 
 }
 
