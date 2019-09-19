@@ -25,14 +25,22 @@ public:
 	//Delete all nodes/entire list
 	~SingleLinkedList();
 
+	//Basic list operations
 	void insertNodeFront();
 	void insertNodeBack();
 	void insertNodeAt(int node);
 	void removeNode(int node);
 	void moveNode(int node, int place);
-	
 	void changeNodeValue(int node, int value);
 
+	//Retrieving values
+	int getNumberNodes();
+	int getNodeValue(int node);
+	int getAllValues();
+
+	//Various sorting things, 
 	void sortLeastToGreat();
+	void sortGreatToLeast();
+	void reverse();
 
 };
