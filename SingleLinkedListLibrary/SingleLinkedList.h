@@ -5,6 +5,7 @@ to manipulate/traverse them.
 
 Notes:
 -All linked lists start with one node (on instantiation, head pointer created and linked to first node)
+-Parameters labeled as 'node' are the node's position in the list (Positions start at 1)
 
 Created by Nicolas Layne (09/2019)
 */
@@ -31,12 +32,11 @@ public:
 	void insertNodeAt(int node);
 	void removeNode(int node);
 	void moveNode(int node, int place);
-	void changeNodeValue(int node, int value);
+	void setNodeValue(int node, int value);
 
 	//Retrieving values
 	int getNumberNodes();
 	int getNodeValue(int node);
-	int getAllValues();
 
 	//Various sorting things, 
 	void sortLeastToGreat();
