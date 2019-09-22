@@ -65,8 +65,27 @@ void SingleLinkedList::removeNode(int node) {
 }
 
 void SingleLinkedList::moveNode(int node, int place) {
-	//Probably just combining remove and then insert at operations
-	//Dont quote me on that, haven't thought it through at all yet
+
+	Node* temp = head;
+	Node* move, * nodePushedBack;
+
+	//Node being moved is "removed" from its spot in the linked list
+	for (int i = 0; i < (node - 2); i++) {
+		temp = temp->next;
+	}
+
+	move = temp->next;
+	temp->next = move->next;
+
+	//Node being moved is then inserted at the specified place
+	temp = head;
+	for (int i = 0; i < (place - 2); i++) {
+		temp = temp->next;
+	}
+	nodePushedBack = temp->next;
+	move->next = nodePushedBack->next;
+	temp->next = move;
+
 }
 
 void SingleLinkedList::setNodeValue(int node, int value) {
@@ -99,11 +118,10 @@ int SingleLinkedList::getNodeValue(int node) {
 	return temp->value;
 }
 
+//Sorting algorithms are going to be solely by node (not value) to be
+//compatible with nodes that have >1 data member
 void SingleLinkedList::sortLeastToGreat() {
-	//Possible routes:
-	//*Have to create new linked list for sorted values?
-
-	//Could just be a matter of moving values, no need to move addresses?
+	
 }
 
 void SingleLinkedList::sortGreatToLeast() {
@@ -111,7 +129,5 @@ void SingleLinkedList::sortGreatToLeast() {
 }
 
 void SingleLinkedList::reverse() {
-	//Reverse by values and reverse by nodes (pointers)
-	//Value Method: store values in array and iterate through all nodes assigning array values
-	//Same could work for pointers? Store pointers in array? Kinda doubt but TBE (To Be Explored)
+	//Store pointers in array? Kinda doubt but TBE (To Be Explored)
 }

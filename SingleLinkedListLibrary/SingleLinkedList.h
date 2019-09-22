@@ -10,6 +10,13 @@ Notes:
 Created by Nicolas Layne (09/2019)
 */
 
+/*
+TODO-----------------------------------
+IMPORTANT: Test all basic functions
+Sorting algorithms
+
+*/
+
 #pragma once
 
 class SingleLinkedList {
