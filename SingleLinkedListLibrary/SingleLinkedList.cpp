@@ -118,10 +118,11 @@ int SingleLinkedList::getNodeValue(int node) {
 	return temp->value;
 }
 
-//Sorting algorithms are going to be solely by node (not value) to be
-//compatible with nodes that have >1 data member
+//Sorting algorithms are going to be solely by node (not value) for the sake
+//of intentionally complicating things
 void SingleLinkedList::sortLeastToGreat() {
-	
+	//Iterate through from start to finish
+	//Every iteration, check two values and if 
 }
 
 void SingleLinkedList::sortGreatToLeast() {
