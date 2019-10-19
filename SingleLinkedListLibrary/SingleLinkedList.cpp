@@ -1,9 +1,9 @@
 #include "SingleLinkedList.h"
 
-//Possible TODO: Constructor parameter to init list with certain number of nodes
-SingleLinkedList::SingleLinkedList() {
+SingleLinkedList::SingleLinkedList(int firstNodeValue) {
 	head = new Node;
 	head->next = nullptr;
+	head->value = firstNodeValue;
 }
 
 SingleLinkedList::~SingleLinkedList() {
@@ -16,18 +16,18 @@ SingleLinkedList::~SingleLinkedList() {
 	}
 }
 
-//TODO: (optional?) parameter to set value of the new node
-void SingleLinkedList::insertNodeFront() {
-	Node* temp = head;
+void SingleLinkedList::insertNodeFront(int value) {
 	Node* insert = new Node;
+	insert->value = value;
 
 	insert->next = head;
 	head = insert;
 }
 
-void SingleLinkedList::insertNodeBack() {
+void SingleLinkedList::insertNodeBack(int value) {
 	Node* temp = head;
 	Node* insert = new Node;
+	insert->value = value;
 
 	while (temp != nullptr) {
 		temp = temp->next;
@@ -37,9 +37,10 @@ void SingleLinkedList::insertNodeBack() {
 	insert->next = nullptr;
 }
 
-void SingleLinkedList::insertNodeAt(int node) {
+void SingleLinkedList::insertNodeAt(int node, int value) {
 	Node* temp = head;
 	Node* insert = new Node;
+	insert->value = value;
 
 	for (int i = 0; i < (node - 2); i++) {
 		temp = temp->next;
@@ -97,6 +98,11 @@ void SingleLinkedList::setNodeValue(int node, int value) {
 	temp->value = value;
 }
 
+void SingleLinkedList::swapNodes(int node1, int node2) {
+	//Swaps the nodes at 2 given positions
+	//Edge cases: if a given node is head or tail
+}
+
 int SingleLinkedList::getNumberNodes() {
 	Node* temp = head;
 	int nodeCounter = 1;
@@ -118,17 +124,59 @@ int SingleLinkedList::getNodeValue(int node) {
 	return temp->value;
 }
 
-//Sorting algorithms are going to be solely by node (not value) for the sake
-//of intentionally complicating things
-void SingleLinkedList::sortLeastToGreat() {
-	//Iterate through from start to finish
-	//Every iteration, check two values and if 
+void SingleLinkedList::printList() {
+	Node* temp = head;
+
+	while (temp != nullptr) {
+		std::cout << temp->value << std::endl;
+		temp = temp->next;
+	}
 }
 
-void SingleLinkedList::sortGreatToLeast() {
+SingleLinkedList::Node* SingleLinkedList::getHeadNode() {
+	return head;
+}
 
+//My take on sorting a linked list prior to knowledge of common sorting algorithms
+void SingleLinkedList::mySortLeastToGreat() {
+	Node* temp = head;
+	int position = 1;
+
+	while (temp != nullptr) {
+		if (temp->next == nullptr || temp->next->next == nullptr)
+			break;
+		if (temp->value > temp->next->value)
+			moveNode(position + 1, position);
+
+		temp = temp->next;
+		position++;
+	}
 }
 
 void SingleLinkedList::reverse() {
-	//Store pointers in array? Kinda doubt but TBE (To Be Explored)
+	if (head != nullptr) {
+		reverse();
+		head->next = head;
+	}
 }
+
+void SingleLinkedList::mergeSort() {
+
+}
+
+void SingleLinkedList::selectionSort() {
+
+}
+
+void SingleLinkedList::bubbleSort() {
+
+}
+
+void SingleLinkedList::insertionSort() {
+
+}
+
+void SingleLinkedList::quickSort() {
+
+}
+

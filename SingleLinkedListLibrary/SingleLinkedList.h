@@ -10,14 +10,8 @@ Notes:
 Created by Nicolas Layne (09/2019)
 */
 
-/*
-TODO-----------------------------------
-IMPORTANT: Test all basic functions
-Sorting algorithms
-
-*/
-
 #pragma once
+#include <iostream>
 
 class SingleLinkedList {
 private:
@@ -29,25 +23,32 @@ private:
 
 public:
 	//Create head
-	SingleLinkedList();
+	SingleLinkedList(int firstNodeValue);
 	//Delete all nodes/entire list
 	~SingleLinkedList();
 
 	//Basic list operations
-	void insertNodeFront();
-	void insertNodeBack();
-	void insertNodeAt(int node);
+	void insertNodeFront(int value);
+	void insertNodeBack(int value);
+	void insertNodeAt(int node, int value);
 	void removeNode(int node);
 	void moveNode(int node, int place);
 	void setNodeValue(int node, int value);
+	void swapNodes(int node1, int node2);
 
 	//Retrieving values
 	int getNumberNodes();
 	int getNodeValue(int node);
+	void printList();
+	Node* getHeadNode();
 
 	//Various sorting things, 
-	void sortLeastToGreat();
-	void sortGreatToLeast();
+	void mySortLeastToGreat();
 	void reverse();
+	void mergeSort();
+	void selectionSort();
+	void bubbleSort();
+	void insertionSort();
+	void quickSort();
 
 };

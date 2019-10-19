@@ -3,10 +3,20 @@
 
 
 int main() {
-	SingleLinkedList list1;
+	SingleLinkedList list1(1);
+	list1.printList();
 
-	list1.insertNodeAt(2);
-	list1.insertNodeFront();
+	list1.insertNodeAt(2, 5);
+	list1.printList();
+
+	list1.insertNodeFront(79);
+	list1.printList();
+
+	list1.insertNodeBack(40);
+	list1.printList();
+
+	//list1.reverse();
+	//list1.mySortLeastToGreat();
 
 	std::cout << list1.getNumberNodes() << std::endl;
 
