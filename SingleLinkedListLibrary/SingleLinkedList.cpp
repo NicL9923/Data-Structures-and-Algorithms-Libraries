@@ -29,11 +29,11 @@ void SingleLinkedList::insertNodeBack(int value) {
 	Node* insert = new Node;
 	insert->value = value;
 
-	while (temp != nullptr) {
+	while (temp->next != nullptr) {
 		temp = temp->next;
 	}
 
-	temp = insert;
+	temp->next = insert;
 	insert->next = nullptr;
 }
 
@@ -42,13 +42,18 @@ void SingleLinkedList::insertNodeAt(int node, int value) {
 	Node* insert = new Node;
 	insert->value = value;
 
+	if (head->next == nullptr) {
+		head->next = insert;
+		insert->next = nullptr;
+		return;
+	}
+
 	for (int i = 0; i < (node - 2); i++) {
 		temp = temp->next;
 	}
 	
 	insert->next = temp->next;
 	temp = insert;
-
 
 }
 
@@ -107,7 +112,7 @@ int SingleLinkedList::getNumberNodes() {
 	Node* temp = head;
 	int nodeCounter = 1;
 
-	while (temp != nullptr) {
+	while (temp->next != nullptr) {
 		nodeCounter++;
 		temp = temp->next;
 	}
@@ -126,6 +131,8 @@ int SingleLinkedList::getNodeValue(int node) {
 
 void SingleLinkedList::printList() {
 	Node* temp = head;
+
+	std::cout << "Printing list..." << std::endl;
 
 	while (temp != nullptr) {
 		std::cout << temp->value << std::endl;
@@ -154,9 +161,19 @@ void SingleLinkedList::mySortLeastToGreat() {
 }
 
 void SingleLinkedList::reverse() {
-	if (head != nullptr) {
-		reverse();
-		head->next = head;
+	Node* temp = head;
+	Node* prev = nullptr;
+	Node* current = nullptr;
+
+	while (temp != nullptr) {
+		//Keep track of where we are in the list
+		current = temp;
+		temp = temp->next;
+
+		//Reverse the pair of nodes as it goes down the list to completion
+		current->next = prev;
+		prev = current;
+		head = current;
 	}
 }
 
