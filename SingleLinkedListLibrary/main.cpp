@@ -13,12 +13,12 @@ int main() {
 	list1.printList();
 
 	list1.insertNodeBack(40);
+	list1.insertNodeBack(3);
+	list1.insertNodeBack(7);
 	list1.printList();
 
 	list1.reverse();
 	list1.printList();
-
-	//list1.mySortLeastToGreat();
 
 	std::cout << "Number of nodes in list: " << list1.getNumberNodes() << std::endl;
 

@@ -42,8 +42,7 @@ public:
 	void printList();
 	Node* getHeadNode();
 
-	//Various sorting things, 
-	void mySortLeastToGreat();
+	//Various sorting things
 	void reverse();
 	void mergeSort();
 	void selectionSort();

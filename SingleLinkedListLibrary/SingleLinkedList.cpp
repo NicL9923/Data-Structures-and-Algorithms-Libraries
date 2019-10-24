@@ -76,20 +76,19 @@ void SingleLinkedList::moveNode(int node, int place) {
 	Node* move, * nodePushedBack;
 
 	//Node being moved is "removed" from its spot in the linked list
-	for (int i = 0; i < (node - 2); i++) {
+	for (int i = 0; i < (node - 2); i++)
 		temp = temp->next;
-	}
 
 	move = temp->next;
 	temp->next = move->next;
 
 	//Node being moved is then inserted at the specified place
 	temp = head;
-	for (int i = 0; i < (place - 2); i++) {
+	for (int i = 0; i < (place - 2); i++)
 		temp = temp->next;
-	}
+
 	nodePushedBack = temp->next;
-	move->next = nodePushedBack->next;
+	move->next = nodePushedBack;
 	temp->next = move;
 
 }
@@ -142,22 +141,6 @@ void SingleLinkedList::printList() {
 
 SingleLinkedList::Node* SingleLinkedList::getHeadNode() {
 	return head;
-}
-
-//My take on sorting a linked list prior to knowledge of common sorting algorithms
-void SingleLinkedList::mySortLeastToGreat() {
-	Node* temp = head;
-	int position = 1;
-
-	while (temp != nullptr) {
-		if (temp->next == nullptr || temp->next->next == nullptr)
-			break;
-		if (temp->value > temp->next->value)
-			moveNode(position + 1, position);
-
-		temp = temp->next;
-		position++;
-	}
 }
 
 void SingleLinkedList::reverse() {
