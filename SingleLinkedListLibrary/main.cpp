@@ -3,7 +3,7 @@
 
 
 int main() {
-	SingleLinkedList list1(1);
+	SingleLinkedList<int> list1(1);
 	list1.printList();
 
 	list1.insertNodeAt(2, 5);

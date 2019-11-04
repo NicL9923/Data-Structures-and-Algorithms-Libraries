@@ -10,11 +10,11 @@
     <ClInclude Include="SingleLinkedList.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="DoubleLinkedList.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SingleLinkedList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
