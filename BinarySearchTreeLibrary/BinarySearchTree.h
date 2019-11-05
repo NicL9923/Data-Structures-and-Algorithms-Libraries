@@ -133,7 +133,45 @@ void BinarySearchTree<type>::postOrderTraversal(Node* root) {
 
 template <class type>
 void BinarySearchTree<type>::insertNode(type value) {
+	Node* temp = root;
+	
+	if (root == nullptr) {
+		root = new Node;
+		root->value = value;
+		root->left = nullptr;
+		root->right = nullptr;
+	}
 
+	while (temp != nullptr) {
+		if (value == temp->value) {
+			std::cout << "Value already in tree." << std::endl;
+			return;
+		}
+		else if (value < temp->value) {
+			if (temp->left == nullptr) {
+				temp->left = new Node;
+				temp = temp->left;
+				temp->value = value;
+				temp->left = nullptr;
+				temp->right = nullptr;
+				return;
+			}
+			else
+				temp = temp->left;
+		}
+		else {
+			if (temp->right == nullptr) {
+				temp->right = new Node;
+				temp = temp->right;
+				temp->value = value;
+				temp->left = nullptr;
+				temp->right = nullptr;
+				return;
+			}
+			else
+			temp = temp->right;
+		}
+	}
 }
 
 template <class type>
@@ -143,7 +181,17 @@ void BinarySearchTree<type>::removeNode(type value) {
 
 template <class type>
 bool BinarySearchTree<type>::isInTree(type value) {
-
+	Node* temp = root;
+	
+	while (temp != nullptr) {
+		if (value == temp->value)
+			return true;
+		else if (value < temp->value)
+			temp = temp->left;
+		else
+			temp = temp->right;
+	}
+	return false;
 }
 
 template <class type>
