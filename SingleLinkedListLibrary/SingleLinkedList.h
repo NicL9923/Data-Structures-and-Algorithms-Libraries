@@ -6,6 +6,7 @@ to manipulate/traverse them.
 Notes:
 -All linked lists start with one node (on instantiation, head pointer created and linked to first node)
 -Parameters labeled as 'node' are the node's position in the list (Positions start at 1)
+-TODO: edge cases (empty list, etc.)
 
 Created by Nicolas Layne (09/2019)
 */
@@ -23,7 +24,7 @@ private:
 	Node* head;
 
 public:
-	//Create head
+	//Initialize head
 	SingleLinkedList(type firstNodeValue);
 	//Delete all nodes/entire list
 	~SingleLinkedList();
@@ -39,7 +40,7 @@ public:
 
 	//Retrieving values
 	int getNumberNodes();
-	int getNodeValue(int node);
+	type getNodeValue(int node);
 	void printList();
 	Node* getHeadNode();
 
@@ -183,7 +184,7 @@ int SingleLinkedList<type>::getNumberNodes() {
 }
 
 template <class type>
-int SingleLinkedList<type>::getNodeValue(int node) {
+type SingleLinkedList<type>::getNodeValue(int node) {
 	Node* temp = head;
 
 	for (int i = 0; i < (node - 1); i++)
