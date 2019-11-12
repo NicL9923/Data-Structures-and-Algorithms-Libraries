@@ -15,13 +15,14 @@ Created by Nicolas Layne (11/2019)
 template <class type>
 class Stack {
 private:
-	int* stackArray, size, index;
+	type* stackArray;
+	int size, index;
 
 public:
 	Stack();
 	~Stack();
 
-	void push();
+	void push(type value);
 	void pop();
 	type top();
 	bool isEmpty();
@@ -29,7 +30,7 @@ public:
 
 template <class type>
 Stack<type>::Stack() {
-	stackArray = new int[10];
+	stackArray = new type[10];
 	size = 10;
 	index = 0;
 }
@@ -37,4 +38,37 @@ Stack<type>::Stack() {
 template <class type>
 Stack<type>::~Stack() {
 	delete[] stackArray;
+}
+
+template <class type>
+void Stack<type>::push(type value) {
+	stackArray[index] = value;
+	index++;
+	
+	if (index == size) {
+		type* resizedArray = new type[size * 2];
+
+		for (int i = 0; i < size; i++)
+			resizedArray[i] = stackArray[i];
+
+		delete[] stackArray;
+		size *= 2;
+		stackArray = resizedArray;
+	}
+}
+
+template <class type>
+void Stack<type>::pop() {
+	if (!isEmpty())
+		index--;
+}
+
+template <class type>
+type Stack<type>::top() {
+	return stackArray[index];
+}
+
+template <class type>
+bool Stack<type>::isEmpty() {
+	return (index == 0);
 }

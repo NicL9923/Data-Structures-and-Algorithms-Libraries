@@ -15,7 +15,8 @@ Created by Nicolas Layne (11/2019)
 template <class type>
 class Queue {
 private:
-	int* queueArray, size, head, tail;
+	type* queueArray;
+	int size, head, tail;
 
 public:
 	Queue();
@@ -29,7 +30,7 @@ public:
 
 template <class type>
 Queue<type>::Queue() {
-	queueArray = new int[10];
+	queueArray = new type[10];
 	size = 10;
 	head = 0;
 	tail = 0;
@@ -38,4 +39,41 @@ Queue<type>::Queue() {
 template <class type>
 Queue<type>::~Queue() {
 	delete[] queueArray;
+}
+
+template <class type>
+void Queue<type>::push() {
+	queueArray[tail] = value;
+	tail = (tail + 1) % size;
+
+	if (tail == head) {
+		type* resizedArray = new type[size * 2];
+
+		for (int i = 0; i < size; i++) {
+			resizedArray[i] = queueArray[head];
+			head = (head + 1) % size;
+		}
+
+		delete[] queueArray;
+		queueArray = resizedArray;
+		tail = size;
+		size *= 2;
+		head = 0;
+	}
+}
+
+template <class type>
+void Queue<type>::pop() {
+	if (!isEmpty())
+		head++;
+}
+
+template <class type>
+type Queue<type>::front() {
+	return queueArray[head];
+}
+
+template <class type>
+bool Queue<type>::isEmpty() {
+	return (head == tail);
 }
