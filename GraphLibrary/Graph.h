@@ -14,8 +14,19 @@ Created by Nicolas Layne (11/2019)
 
 class Graph {
 private:
+	int numNodes;
+	int graph[numNodes][numNodes];
 
 public:
-	Graph();
+	Graph(int numbNodes);
 	~Graph();
 };
+
+Graph::Graph(int numbNodes) {
+	numNodes = numbNodes;
+	graph[numNodes][numNodes] = { 0 };
+}
+
+Graph::~Graph() {
+	delete[] graph;
+}
