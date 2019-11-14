@@ -22,7 +22,7 @@ public:
 	Queue();
 	~Queue();
 
-	void push();
+	void push(type value);
 	void pop();
 	type front();
 	bool isEmpty();
@@ -42,7 +42,7 @@ Queue<type>::~Queue() {
 }
 
 template <class type>
-void Queue<type>::push() {
+void Queue<type>::push(type value) {
 	queueArray[tail] = value;
 	tail = (tail + 1) % size;
 
