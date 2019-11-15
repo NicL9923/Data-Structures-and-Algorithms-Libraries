@@ -65,7 +65,7 @@ void Stack<type>::pop() {
 
 template <class type>
 type Stack<type>::top() {
-	return stackArray[index];
+	return stackArray[index - 1];
 }
 
 template <class type>
