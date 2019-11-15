@@ -5,6 +5,7 @@ to manipulate/traverse/search them.
 
 Notes:
 -Need to create and pass own bool visited[]
+-Functions are written to be used functionally, not object...ally
 
 Created by Nicolas Layne (11/2019)
 */
@@ -59,21 +60,33 @@ void Graph::recursiveDepthFirstTraversal(int G[][numNodes], int startNode, bool 
 	}
 }
 
-//Incomplete and In Progress
 void Graph::stackDepthFirstTraversal(int G[][numNodes], int startNode, bool visited[]) {
 	Stack<int> s;
 	
-	if (!visited[startNode]) {
-		visited[startNode] = true;
-		std::cout << startNode << std::endl;
+	visited[startNode] = true;
+	std::cout << startNode << std::endl;
+	s.push(startNode);
 
+	while (!s.isEmpty()) {
+		int k = s.top();
+		bool flag = false;
+
+		//Go to first lowest value neighbor and repeat
 		for (int i = 0; i < numNodes; i++) {
-			if (G[startNode][i] == 1 && !visited[i]) {
+			if (G[k][i] == 1 && !visited[i]) {
+				visited[i] = true;
+				std::cout << i << std::endl;
+				flag = true;
 				s.push(i);
+				break;
 			}
-			break;
+		}
+
+		if (!flag) {
+			s.pop();
 		}
 	}
+
 }
 
 void Graph::breadthFirstTraversal(int G[][numNodes], int startNode, bool visited[]) {
