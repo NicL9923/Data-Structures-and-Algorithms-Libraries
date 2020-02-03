@@ -24,7 +24,7 @@ public:
 	void assignValues();
 	void randomizeArray();
 
-	void binarySearch();
+	void binarySearch(int a[], int L, int R, int val);
 
 	void selectionSort();
 	void bubbleSort();
@@ -52,8 +52,24 @@ void ArraySorts::randomizeArray() {
 
 }
 
-void ArraySorts::binarySearch() {
+void ArraySorts::binarySearch(int a[], int L, int R, int val) {
+	if (L <= R) {
+		int mid = (L + R) / 2;
 
+		//We find the value
+		if (a[mid] == val) {
+			std::cout << "The value " << val << " was found at index " << mid << std::endl;
+			return;
+		}
+		//Continue the search in the half that will have the value
+		if (a[mid] > val)
+			binarySearch(a, L, mid - 1, val);
+		else
+			binarySearch(a, mid + 1, R, val);
+	}
+
+	//If we don't find the value
+	std::cout << "Value " << val << " was not found in the first array" << std::endl;
 }
 
 //Compare current index with each index following it,
