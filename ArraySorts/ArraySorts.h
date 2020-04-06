@@ -72,31 +72,45 @@ void ArraySorts::binarySearch(int a[], int L, int R, int val) {
 	std::cout << "Value " << val << " was not found in the first array" << std::endl;
 }
 
-//Compare current index with each index following it,
-//if number found is less, swap it.
+//Find index with smallest value then swap
 void ArraySorts::selectionSort() {
+	int minIndex = 0;
+	
 	for (int i = 0; i < size - 1; i++) {
 		for (int j = i + 1; j < size; j++) {
-			if (arr[i] > arr[j]) {
-				int temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
+			if (arr[j] < arr[minIndex]) {
+				minIndex = j;
+			}
+		}
+		swap(arr[i], arr[minIndex]);
+	}
+}
+
+//Compares two values in 'bubbles' that travels
+//the length of the array
+void ArraySorts::bubbleSort() {
+	for (int i = 0; i < n - 1; i++) {
+		for (int j = 0; j < n - i - 1; j++) {
+			if (arr[j] > arr[j + 1]) {
+				swap(arr[j], arr[j + 1];
 			}
 		}
 	}
 }
 
-//Compares two values in a 'bubble' that travels
-//the length of the array
-void ArraySorts::bubbleSort() {
-	for (int i = size; i > 0; i--) {
-		for (int j = 0; j < i; j++) {
-			if (arr[i] > arr[j + 1]) {
-				int temp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = temp;
-			}
+//Builds a sorted list on left as it scans array to right
+void ArraySorts::insertionSort() {
+	int key, j;
+
+	for (int i = 1; i < size; i++) {
+		key = arr[i];
+		j = i - 1;
+
+		while (j >= 0 && arr[j] > key) {
+			arr[j + 1] = arr[j];
+			j--;
 		}
+		arr[j + 1] = key;
 	}
 }
 
