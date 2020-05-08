@@ -122,7 +122,7 @@ int Algorithms::partition(int L, int R) {
 		} while (itemList[i] < pivot);
 
 		do {
-			j++;
+			j--;
 		} while (itemList[j] > pivot);
 
 		std::swap(itemList[i], itemList[j]);
