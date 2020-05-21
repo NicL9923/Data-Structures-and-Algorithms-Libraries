@@ -15,8 +15,8 @@ private:
 	std::vector<int> itemList;
 	int listSize;
 
-	void merge(std::vector<int> B, std::vector<int> C);
-	void mergeSort(std::vector<int> A);
+	void merge(std::vector<int> mergingVector, int L, int M, int R);
+	void mergeSort(int L, int R);
 	void quickSort(int L, int R);
 	int partition(int L, int R);
 
@@ -173,56 +173,47 @@ int Algorithms::partition(int L, int R) {
 //Breaks down array into single nodes then merges/sorts
 //back up to completely sorted array
 void Algorithms::mergeSort() {
-	mergeSort(itemList);
+	mergeSort(0, listSize - 1);
 }
 
-void Algorithms::mergeSort(std::vector<int> A) {
-	if (listSize > 1) {
-		std::vector<int> B;
-		std::vector<int> C;
+void Algorithms::mergeSort(int L, int R) {
+	if (L < R) {
+		int M = (L + R) / 2;
+		std::vector<int> mergingVector = itemList;
 
-		for (int i = 0; i < listSize; i++) {
-			if (i < num / 2) {
-				B.push_back(itemList[i]);
-			}
-			else if (i >= num / 2) {
-				C.push_back(itemList[i]);
-			}
-		}
-
-		mergeSort(B);
-		mergeSort(C);
-		merge(list, num / 2, B, num - (num / 2), C);
+		mergeSort(L, M);
+		mergeSort(M + 1, R);
+		merge(mergingVector, L, M, R);
 	}
 }
 
-void Algorithms::merge(std::vector<int> B, std::vector<int> C) {
-	int i = 0, j = 0, k = 0;
-	int n = B.size();
-	int m = C.size();
+void Algorithms::merge(std::vector<int> mergingVector, int L, int M, int R) {
+	int i = L, j = M + 1, k = L;
 
-	while (i < n && j < m) {
-		if (B[i] <= C[j]) {
-			A[k] = B[i];
-			i++;
+	//Compare the two sorted subarrays and put them into sorted 'b' array
+	while (i <= M && j <= R) {
+		if (itemList[i] < itemList[j]) {
+			mergingVector[k] = itemList[i];
+			i++; k++;
 		}
 		else {
-			A[k] = C[j];
-			j++;
+			mergingVector[k] = itemList[j];
+			j++; k++;
 		}
-		k++;
 	}
 
-	if (i == n) {
-		while (j < m) {
-			A[k] = C[j];
-			k++; j++;
-		}
+	//Once all comparisons are done, add the remaining values of the larger array
+	while (i <= M) {
+		mergingVector[k] = itemList[i];
+		i++; k++;
 	}
-	else {
-		while (i < n) {
-			A[k] = B[i];
-			k++; i++;
-		}
+	while (j <= R) {
+		mergingVector[k] = itemList[j];
+		j++; k++;
 	}
-}
+
+	//Copy all values over
+	for (int i = L; i <= R; i++) {
+		itemList[i] = mergingVector[i];
+	}
+} 
