@@ -1,12 +1,8 @@
 /*
 -----Queue-----
-A library/class about queues and various methods
-to manipulate/traverse them.
+My recreation of the Queue data structure.
 
-Notes:
--
-
-Created by Nicolas Layne (11/2019)
+-Nicolas Layne (11/2019)
 */
 
 #pragma once

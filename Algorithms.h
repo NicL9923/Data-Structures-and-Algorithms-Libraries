@@ -1,14 +1,8 @@
 #pragma once
 /*
------Array Sorts-----
-A library/class about sorting algorithms performed
-on arrays.
-
-Notes:
--Yes I know the arguments are unecessary, it's there
-for learning purposes
-
-Created by Nicolas Layne (11/2019)
+-----Algorithms-----
+My recreation of various search and sort algorithms.
+-Nicolas Layne (11/2019)
 */
 
 #pragma once
@@ -58,7 +52,7 @@ void Algorithms::assignRandomValues() {
 
 void Algorithms::randomizeArrayOrder() {
 	for (int i = 0; i < listSize; i += 2) {
-		std::swap(itemList[i], itemList[rand() % listSize];
+		std::swap(itemList[i], itemList[rand() % listSize]);
 	}
 }
 

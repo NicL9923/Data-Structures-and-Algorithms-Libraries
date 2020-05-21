@@ -1,26 +1,28 @@
 /*
 -----Single Linked Lists-----
-A library/class about single linked lists and various methods
+My recreation of singly linked lists and various methods
 to manipulate/traverse them.
+-Nicolas Layne (09/2019)
 
 Notes:
 -All linked lists start with one node (on instantiation, head pointer created and linked to first node)
 -Parameters labeled as 'node' are the node's position in the list (Positions start at 1)
--TODO: edge cases (empty list, etc.)
 
-Created by Nicolas Layne (09/2019)
+-TODO: edge cases (empty list, etc.)
 */
 
 #pragma once
 #include <iostream>
 
 template <class type>
+
 class SingleLinkedList {
 private:
 	struct Node {
 		type value;
 		Node* next;
 	};
+
 	Node* head;
 
 public:
@@ -44,14 +46,8 @@ public:
 	void printList();
 	Node* getHeadNode();
 
-	//Various sorting things
+	//Can't forget this one...
 	void reverse();
-	void mergeSort();
-	void selectionSort();
-	void bubbleSort();
-	void insertionSort();
-	void quickSort();
-
 };
 
 template <class type>
@@ -226,29 +222,4 @@ void SingleLinkedList<type>::reverse() {
 		prev = current;
 		head = current;
 	}
-}
-
-template <class type>
-void SingleLinkedList<type>::mergeSort() {
-
-}
-
-template <class type>
-void SingleLinkedList<type>::selectionSort() {
-
-}
-
-template <class type>
-void SingleLinkedList<type>::bubbleSort() {
-
-}
-
-template <class type>
-void SingleLinkedList<type>::insertionSort() {
-
-}
-
-template <class type>
-void SingleLinkedList<type>::quickSort() {
-
 }

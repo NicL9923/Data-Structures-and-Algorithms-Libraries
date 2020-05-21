@@ -1,13 +1,13 @@
 /*
 -----Binary Search Trees-----
-A library/class about binary search trees and various methods
+My recreation of binary search trees and various methods
 to manipulate/traverse them.
+-Nicolas Layne (11/2019)
 
 Notes:
 -All BSTs start with one node (on instantiation, root pointer created and linked to first node)
--TODO: edge cases (empty tree, etc.)
 
-Created by Nicolas Layne (11/2019)
+-TODO: edge cases (empty tree, etc.)
 */
 
 #pragma once

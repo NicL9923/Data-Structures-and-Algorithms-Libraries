@@ -1,16 +1,16 @@
 /*
 -----Double Linked Lists-----
-A library/class about double linked lists and various methods
+My recreation of doubly linked lists and various methods
 to manipulate/traverse them.
+-Nicolas Layne (11/2019)
 
 Notes:
 -All linked lists start with one node (on instantiation, head pointer created and linked to first node)
 -Parameters labeled as 'node' are the node's position in the list (Positions start at 1)
--Possible TODO: Implement a 'tail' pointer to make insertNodeBack and other operations
+
+-TODO: Implement a 'tail' pointer to make insertNodeBack and other operations
 a little more efficient
 -TODO: edge cases (empty list, etc.)
-
-Created by Nicolas Layne (11/2019)
 */
 
 #pragma once
